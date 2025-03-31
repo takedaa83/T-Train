@@ -1,17 +1,20 @@
 # T-Train
 
-A professional Minecraft plugin for training Crystal PvP with zombies. This plugin provides a robust and user-friendly interface for practicing Crystal PvP mechanics using customizable training zombies.
 
-## Features
+## Advanced Crystal PvP Training for Minecraft
 
-- Modern and aesthetic GUI interface
-- Customizable training zombies with configurable totem counts
-- Adjustable training duration
-- Player preference saving system
-- Command-line interface for quick access
-- Sound effects and visual feedback
-- PlaceholderAPI support
-- Lightweight and optimized performance
+T-Train is a specialized Minecraft plugin designed for competitive players looking to master Crystal PvP techniques. By providing customizable training zombies equipped with totems, this plugin offers a controlled environment to practice combat skills, timing, and strategies essential for high-level PvP.
+
+![GUI Preview](assets/gui-preview.png)
+
+## Key Features
+
+- **Intuitive Training Interface**: Sleek, modern GUI for easy configuration of your training sessions
+- **Customizable Training Zombies**: Control totem count, training duration, and zombie attributes
+- **Progression System**: Save personal preferences and track improvement over time
+- **World Management**: Configure which worlds allow training sessions
+- **Optimized Performance**: Minimal server impact even with multiple training sessions active
+- **Visual & Audio Feedback**: Clear indicators and sound effects enhance the training experience
 
 ## Requirements
 
@@ -21,65 +24,78 @@ A professional Minecraft plugin for training Crystal PvP with zombies. This plug
 
 ## Commands
 
-- `/train` - Opens the training GUI
-- `/train <totems> <duration>` - Spawns a training zombie with specified settings
-- `/ttrain` - Alias for the train command
+| Command | Description |
+|---------|-------------|
+| `/train` | Opens the main training GUI |
+| `/train <totems> <duration>` | Quick-spawns a training zombie with specified settings |
+| `/ttrain` | Alias for the train command |
 
-## Configuration
+## Quick Start Guide
 
-All aspects of the plugin can be configured in `config.yml`:
+1. **Installation**: Place the jar file in your server's `plugins` folder and restart
+2. **First Use**: Type `/train` to open the configuration GUI
+3. **Configuration**: Set your desired totems (1-5) and duration (10-300 seconds)
+4. **Training**: Click the zombie head to spawn your training zombie
+5. **Practice**: Use crystals to attack the zombie and practice timing your hits
 
-- Maximum totem count
-- Maximum training duration
-- GUI appearance
-- Sound effects
-- Messages and placeholders
+## Advanced Configuration
 
-## Installation
+The plugin is extensively configurable through `config.yml`:
 
-1. Download the latest release from the releases page
-2. Place the jar file in your server's `plugins` folder
-3. Restart your server or use a plugin manager to load the plugin
+```yaml
+# Sample configuration (see full file for all options)
+zombie:
+  max-totems: 5
+  health: 40.0
+  end-session-on-last-totem: true
 
-## Usage
+training:
+  max-duration: 300
+  min-duration: 10
+  min-totems: 1
+```
 
-1. Use `/train` to open the GUI
-2. Configure your desired settings:
-   - Set the number of totems
-   - Set the training duration
-3. Click the zombie head to spawn your training zombie
-4. Save your preferences for future use
+## World Management
 
-## Features in Detail
+Control where training zombies can be spawned:
 
-### Training Zombies
-- Equipped with unbreakable netherite armor
-- Customizable number of totems
-- Configurable health
-- Persistent and won't despawn
-- Custom name and appearance
+```yaml
+worlds:
+  enabled:
+    - "world"
+    - "training_arena"
+  disabled:
+    - "spawn"
+    - "creative_world"
+```
 
-### GUI Interface
-- Modern gradient design
-- Intuitive button layout
-- Real-time feedback
-- Sound effects for interactions
-- Save and reset functionality
+## Permissions
 
-### Command Interface
-- Quick access to spawn zombies
-- Tab completion support
-- Parameter validation
-- Clear error messages
+- `ttrain.use` - Access to basic commands and GUI
+- `ttrain.spawn.command` - Ability to spawn zombies via command
+- `ttrain.spawn.gui` - Ability to spawn zombies via GUI
+- `ttrain.admin` - Complete administrative access
 
-## Contributing
+## For Developers
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+T-Train is open source and welcomes contributions. The plugin uses a modern architecture with:
+
+- Clean manager-based design
+- Event-driven interactions
+- Comprehensive logging system
+- Placeholder API integration
+
+## Support & Community
+
+Having issues or suggestions? We're here to help:
+
+- GitHub Issues: Report bugs or request features
+- Discord: Join our community for tips and discussion
 
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Support
+---
 
-For support, please create an issue in the GitHub repository or contact the developer. 
+*T-Train: Perfect your crystal PvP skills one zombie at a time.*
