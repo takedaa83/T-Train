@@ -5,7 +5,7 @@
 
 T-Train is a specialized Minecraft plugin designed for competitive players looking to master Crystal PvP techniques. By providing customizable training zombies equipped with totems, this plugin offers a controlled environment to practice combat skills, timing, and strategies essential for high-level PvP.
 
-![GUI Preview](assets/gui-preview.png)
+![GUI Preview](assets/gui.png)
 
 ## Key Features
 
