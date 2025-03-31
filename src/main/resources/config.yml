@@ -1,0 +1,143 @@
+# T-Train Configuration
+# Version: 1.3
+
+# --- World Settings --- #
+worlds:
+  # Worlds where zombies CAN be spawned
+  enabled:
+    - "world"
+    - "world_nether"
+    - "world_the_end"
+    - "training_arena"
+  # Worlds where zombies CANNOT be spawned (overrides enabled)
+  disabled:
+    - "spawn"
+    - "creative_world"
+  # Aliases for worlds with different folder names
+  aliases:
+    "training": "training_arena"
+    "pvp": "pvp_zone_1"
+
+# --- Zombie Settings --- #
+zombie:
+  max-totems: 5
+  health: 40.0
+  spawn-height: 2.0 # Height above player to spawn
+  end-session-on-last-totem: true # End training immediately when the last totem pops?
+
+# --- Training Settings --- #
+training:
+  max-duration: 300 # seconds
+  min-duration: 10  # seconds - NEW Minimum duration
+  default-duration: 60 # seconds
+  default-totems: 1
+  min-totems: 1 # NEW Minimum totems allowed
+
+# --- GUI Settings --- #
+gui:
+  title: "<gradient:#5e72e4:#825ee4><b>Crystal PvP Training</b></gradient>"
+  size: 45 # Must be a multiple of 9 (e.g., 27, 36, 45, 54)
+  # --- GUI Button Slots (0-based index) --- #
+  slots:
+    totem: 20
+    duration: 24
+    spawn: 22
+    save: 38
+    reset: 40
+    exit: 42
+  # --- GUI Button Materials (Use valid Bukkit Material names) --- #
+  button-materials:
+    totem: "TOTEM_OF_UNDYING"
+    duration: "CLOCK"
+    spawn: "ZOMBIE_HEAD"
+    save: "LIME_CONCRETE"
+    reset: "RED_CONCRETE"
+    exit: "BARRIER"
+    border: "GRAY_STAINED_GLASS_PANE"
+    special: "PURPLE_STAINED_GLASS_PANE"
+
+# --- Sound Effects --- #
+sounds:
+  gui-open: "BLOCK_CHEST_OPEN"
+  gui-close: "BLOCK_CHEST_CLOSE"
+  zombie-spawn: "ENTITY_ZOMBIE_AMBIENT"
+  zombie-death: "ENTITY_ZOMBIE_DEATH"
+  totem-use: "ITEM_TOTEM_USE"
+  settings-change: "ENTITY_EXPERIENCE_ORB_PICKUP"
+  error: "ENTITY_VILLAGER_NO"
+  success: "ENTITY_PLAYER_LEVELUP"
+
+# --- Messages --- #
+# Input prompts will show in chat.
+# All other success/error messages will show in the action bar.
+messages:
+  # --- Input Prompts (Chat) --- #
+  input:
+    totem-count: "<#11cdef>Enter totem count <#adb5bd>({min}-{max})<#11cdef>:</#11cdef>"
+    duration: "<#11cdef>Enter duration in seconds <#adb5bd>({min}-{max})<#11cdef>:</#11cdef>"
+
+  # --- Action Bar Messages --- #
+  action-bar:
+    # Success
+    zombie-spawned: "<#2dce89>✔ Zombie spawned: <white>{totems}</white> totems, <white>{duration}s</white> duration!</#2dce89>"
+    totem-count-set: "<#2dce89>✔ Totem count set to <white>{count}</white>!</#2dce89>"
+    duration-set: "<#2dce89>✔ Duration set to <white>{duration}s</white>!</#2dce89>"
+    preferences-saved: "<#2dce89>✔ Preferences saved!</#2dce89>"
+    preferences-reset: "<#2dce89>✔ Settings reset to defaults!</#2dce89>"
+    training-complete: "<#2dce89>✔ Training session ended!</#2dce89>"
+    totem-used: "<#f5365c>⚠ Zombie used totem! <white>{count}</white> left.</#f5365c>"
+    # Errors
+    invalid-number: "<#fb6340>✖ Invalid number entered!</#fb6340>"
+    invalid-totem-count: "<#fb6340>✖ Invalid totem count (<white>{min}-{max}</white>)!</#fb6340>"
+    invalid-duration: "<#fb6340>✖ Invalid duration (<white>{min}s-{max}s</white>)!</#fb6340>"
+    zombie-already-active: "<#fb6340>✖ Training zombie already active!</#fb6340>"
+    no-permission: "<#fb6340>✖ You lack permission!</#fb6340>"
+    world-disabled: "<#fb6340>✖ Cannot spawn zombie in this world!</#fb6340>"
+    spawn-failed: "<#fb6340>✖ Zombie spawn failed! (Check console)</#fb6340>"
+    gui-error: "<#fb6340>✖ GUI Error! (Check console)</#fb6340>"
+
+  # --- Chat Error Messages (Keep these in chat for clarity) --- #
+  chat-errors:
+    player-only: "<#fb6340>✖ This command can only be used by players!</#fb6340>"
+    invalid-usage: "<#fb6340>✖ Invalid usage! Use: <#adb5bd>/train [totems] [duration]</#adb5bd></#fb6340>"
+    world-not-found: "<#fb6340>✖ World Error: <#adb5bd>The specified world '{world}' was not found!</#adb5bd></#fb6340>"
+
+# --- GUI Items --- #
+items:
+  totem:
+    name: "<gradient:#5e72e4:#825ee4><b>Totem Count</b></gradient>"
+    lore:
+      - "<#adb5bd>Current: <#11cdef>{count}</#11cdef></#adb5bd>"
+      - " "
+      - "<#f5365c>Click to change</#f5365c>"
+      - "<#adb5bd>Range: <white>{min}-{max}</white></#adb5bd>"
+  duration:
+    name: "<gradient:#5e72e4:#825ee4><b>Training Duration</b></gradient>"
+    lore:
+      - "<#adb5bd>Current: <#11cdef>{duration}s</#11cdef></#adb5bd>"
+      - " "
+      - "<#f5365c>Click to change</#f5365c>"
+      - "<#adb5bd>Range: <white>{min}s-{max}s</white></#adb5bd>"
+  spawn:
+    name: "<#2dce89><b>Spawn Zombie</b></#2dce89>"
+    lore:
+      - "<#adb5bd>Click to spawn a zombie with:</#adb5bd>"
+      - "<#adb5bd> • <white>{totems}</white> totems</#adb5bd>"
+      - "<#adb5bd> • <white>{duration}s</white> duration</#adb5bd>"
+      - " "
+      - "<#11cdef>Let the training begin!</#11cdef>"
+  save:
+    name: "<#2dce89><b>Save Settings</b></#2dce89>"
+    lore:
+      - "<#adb5bd>Save your current totem</#adb5bd>"
+      - "<#adb5bd>and duration settings.</#adb5bd>"
+  reset:
+    name: "<#fb6340><b>Reset Settings</b></#fb6340>"
+    lore:
+      - "<#adb5bd>Reset to default:</#adb5bd>"
+      - "<#adb5bd> • <white>{default-totems}</white> totem</#adb5bd>"
+      - "<#adb5bd> • <white>{default-duration}s</white> duration</#adb5bd>"
+  exit:
+    name: "<#adb5bd><b>Close Menu</b></#adb5bd>"
+    lore:
+      - "<#adb5bd>Exit the training menu.</#adb5bd>" 

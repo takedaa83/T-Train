@@ -1,0 +1,32 @@
+name: T-Train
+version: '1.0'
+main: com.takeda.ttrain.TTrainPlugin
+api-version: '1.21'
+authors: [Takeda]
+description: A plugin for training Crystal PvP with zombies!!
+website: https://github.com/Takeda/T-Train
+
+commands:
+  train:
+    description: Opens the training GUI or spawns a training zombie
+    usage: /<command> [totems] [duration]
+    aliases: [ttrain]
+    permission: ttrain.use
+
+permissions:
+  ttrain.use:
+    description: Allows using the /train command (base usage and GUI)
+    default: true
+  ttrain.spawn.command:
+    description: Allows spawning zombies directly via /train <totems> <duration>
+    default: op
+  ttrain.spawn.gui:
+    description: Allows spawning zombies via the GUI button
+    default: op
+  ttrain.admin:
+    description: Allows access to administrative commands (e.g., reload)
+    default: op
+    children:
+      ttrain.use: true
+      ttrain.spawn.command: true
+      ttrain.spawn.gui: true
